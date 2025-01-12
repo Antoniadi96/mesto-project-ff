@@ -5,4 +5,4 @@
 Задача на этом этапе — создавать и удалять карточки с помощью JavaScript. 
 
 ### Ссылка на проект
-https://github.com/Antoniadi96/zakrivayuschiy-teg-f.git
+https://github.com/Antoniadi96/mesto-project-ff.git
