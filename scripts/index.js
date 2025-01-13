@@ -20,10 +20,9 @@ function createCard(initialCard, deleteCard) {
     cardImage.alt = initialCard.name;
     cardTitle.textContent = initialCard.name;
 
-    cardDeleteButton.addEventListener('click', function() {
-        const cardToDelete = cardDeleteButton.closest('.places__item');
-        deleteCard(cardToDelete);
-      })
+    cardDeleteButton.addEventListener('click', function() { 
+        deleteCard(card); 
+    })
 
     return card;
 }
