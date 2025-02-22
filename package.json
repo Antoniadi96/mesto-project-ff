@@ -11,8 +11,7 @@
   "author": "https://github.com/Antoniadi96/",
   "license": "ISC",
   "dependencies": {
-    "core-js": "^3.40.0",
-    "jquery": "^3.7.1"
+    "core-js": "^3.40.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.8",

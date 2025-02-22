@@ -1,23 +1,23 @@
 const cardTemplate = document.querySelector('#card-template').content;
 
 //Функция для создания и удаления карточек из массива
-const createCard = (initialCard, deleteCardCall, likeCardCall, openFullImage) => {
-  const card = cardTemplate.cloneNode(true);
-  const cardImage =  card.querySelector('.card__image');
-  card.querySelector('.card__title').textContent = initialCard.name;
-  cardImage.src = initialCard.link;
-  cardImage.alt = initialCard.name;
+const createCard = (card, deleteCardCall, likeCardCall, openFullImage) => {
+  const cardElement= cardTemplate.querySelector(".card").cloneNode(true); 
+  const cardImage =  cardElement.querySelector('.card__image');
+  cardElement.querySelector('.card__title').textContent = card.name;
+  cardImage.src = card.link;
+  cardImage.alt = card.name;
 
-  const cardDeleteButton = card.querySelector('.card__delete-button');
+  const cardDeleteButton = cardElement.querySelector('.card__delete-button');
   cardDeleteButton.addEventListener('click', deleteCardCall);
 
-  const cardlikeButton = card.querySelector('.card__like-button');
+  const cardlikeButton = cardElement.querySelector('.card__like-button');
   cardlikeButton.addEventListener('click', likeCardCall);
 
-  const cardimageButton = card.querySelector('.card__image');
+  const cardimageButton = cardElement.querySelector('.card__image');
   cardimageButton.addEventListener('click', openFullImage);
 
-  return card; 
+  return cardElement; 
 }
 
 //Колбек удаления
