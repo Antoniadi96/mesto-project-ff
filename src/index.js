@@ -17,6 +17,13 @@ const popupNewCard = document.querySelector('.popup_type_new-card');
 const popupNewCardNameInput = popupNewCard.querySelector('.popup__input_type_card-name'); 
 const popupNewCardLinkInput = popupNewCard.querySelector('.popup__input_type_url'); 
 
+//Добавлоения модификатора
+const popup = document.querySelectorAll('.popup');
+popup.forEach((p) => {
+  p.classList.add('popup_is-animated');
+});
+
+
 //Колбек изображения
 const openImagePopup = function(event) {
   popupImage.src = event.target.src;

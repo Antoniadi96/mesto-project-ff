@@ -1,6 +1,3 @@
-const popup = document.querySelector('.popup');
-popup.classList.add('popup_is-animated');
-
 //ФУНКЦИЯ ОТКРЫТИЯ ПОПАПА
 function openModal(popup) {
   popup.classList.add('popup_is-opened');
