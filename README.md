@@ -7,5 +7,8 @@
  2. подключить интерфейс к API;
  3. опубликоваь получившийся сайт на сервере.
 
-### Ссылка на проект
+### Ссылка на проект GitHub
 https://github.com/Antoniadi96/mesto-project-ff.git
+
+### Ссылка на опубликованный проект
+https://antoniadi96.github.io/mesto-project-ff/
