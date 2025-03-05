@@ -14,6 +14,7 @@ const showInputError = (
 // Функция скрытия ошибки
 const hideInputError = (formElement, inputElement, validationConfig) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.setCustomValidity("");
   inputElement.classList.remove(validationConfig.inputErrorClass);
   errorElement.textContent = "";
   errorElement.classList.remove(validationConfig.errorClass);
@@ -82,19 +83,21 @@ const enableValidation = (validationConfig) => {
     setEventListeners(formElement, validationConfig);
   });
 };
-
-// Функция очистки ошибок валидации
-const clearValidation = (profileForm, validationConfig) => {
-  const buttonElement = profileForm.querySelector(
-    validationConfig.submitButtonSelector
-  );
+// Функция отключения кнопки отправки
+const disableSubmitButton = (form, validationConfig) => {
+  const buttonElement = form.querySelector(validationConfig.submitButtonSelector);
   buttonElement.disabled = true;
   buttonElement.classList.add(validationConfig.inactiveButtonClass);
+};
+
+// Функция очистки ошибок валидации
+const clearValidation = (form, validationConfig) => {
+  disableSubmitButton(form, validationConfig);
   const inputElements = Array.from(
-    profileForm.querySelectorAll(validationConfig.inputSelector)
+    form.querySelectorAll(validationConfig.inputSelector)
   );
   inputElements.forEach((inputElement) => {
-    hideInputError(profileForm, inputElement, validationConfig);
+    hideInputError(form, inputElement, validationConfig);
   });
 };
 

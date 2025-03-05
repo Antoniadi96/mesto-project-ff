@@ -19,79 +19,110 @@ function getResponseData(res) {
 const getCards = () => {
   return fetch(config.baseUrl + "/cards", {
     headers: config.headers,
-  }).then(getResponseData);
+  }).then(getResponseData)
+  .catch((error) => {
+    console.error('Ошибка при загрузке карточек:', error);
+  });
 };
 
 //ЗАГРУЗКА ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЕ С СЕРВЕРА
 const getInformation = () => {
   return fetch(config.baseUrl + "/users/me", {
     headers: config.headers,
-  }).then(getResponseData);
+  }).then(getResponseData)
+  .catch((error) => {
+    console.error('Ошибка при загрузке информации:', error);
+  });
 };
 
 //ОТПРАВЛЕНИЕ НОВОЙ КАРТОЧКИ НА СЕРВЕР
-const sendingCard = async (name, link) => {
-  const res = await fetch(config.baseUrl + "/cards", {
-    method: "POST",
-    headers: config.headers,
-    body: JSON.stringify({
-      name: name,
-      link: link,
-    }),
-  })
-  return await getResponseData(res);
-};
+const sendingCard = async (name, link) => { 
+  try {
+    const res = await fetch(config.baseUrl + "/cards", { 
+      method: "POST", 
+      headers: config.headers, 
+      body: JSON.stringify({ 
+        name: name, 
+        link: link, 
+      }), 
+    });
+    return await getResponseData(res);
+  } catch (error) {
+    console.error('Ошибка при отправке карточки:', error);
+  }
+}; 
+
 
 //ОТПРАВЛЕНИЕ ИМЕНИ И ЗАНЯТИЯ О ПОЛЬЗОВАТЕЛЕ НА СЕРВЕР
-const sendingInformation = async (name, about) => {
-  const res = await fetch(config.baseUrl + "/users/me", {
-    method: "PATCH",
-    headers: config.headers,
-    body: JSON.stringify({
-      name: name,
-      about: about,
-    }),
-  });
-  return await getResponseData(res);
-};
+const sendingInformation = async (name, about) => { 
+  try {
+    const res = await fetch(config.baseUrl + "/users/me", { 
+      method: "PATCH", 
+      headers: config.headers, 
+      body: JSON.stringify({ 
+        name: name, 
+        about: about, 
+      }), 
+    });
+    return await getResponseData(res);
+  } catch (error) {
+    console.error('Ошибка при отправке информации:', error);
+  }
+}; 
 
 //ОТПРАВЛЕНИЕ АВАТАРА ПОЛЬЗОВАТЕЛЯ
-const sendingAvatar = async (avatar) => {
-  const res = await fetch(config.baseUrl + "/users/me/avatar", {
-    method: "PATCH",
-    headers: config.headers,
-    body: JSON.stringify({
-      avatar: avatar,
-    }),
-  });
-  return await getResponseData(res);
-};
+const sendingAvatar = async (avatar) => { 
+  try {
+    const res = await fetch(config.baseUrl + "/users/me/avatar", { 
+      method: "PATCH", 
+      headers: config.headers, 
+      body: JSON.stringify({ 
+        avatar: avatar, 
+      }), 
+    });
+    return await getResponseData(res);
+  } catch (error) {
+    console.error('Ошибка при отправке аватара:', error);
+  }
+}; 
 
 //УДАЛЕНИЕ КАРТОЧКИ С СЕРВЕРА
-const deleteCard = async (cardId) => {
-  const res = await fetch(config.baseUrl + `/cards/${cardId}`, {
-    method: "DELETE",
-    headers: config.headers,
-  });
-  return await getResponseData(res);
-};
+const deleteCard = async (cardId) => { 
+  try {
+    const res = await fetch(config.baseUrl + `/cards/${cardId}`, { 
+      method: "DELETE", 
+      headers: config.headers, 
+    });
+    return await getResponseData(res);
+  } catch (error) {
+    console.error('Ошибка при удалении карточки:', error);
+  }
+}; 
 
 //ДОБАВЛЕНИЕ ЛАЙКА НА СЕРВЕР
-const addLike = async (cardId) => {
-  const res = await fetch(config.baseUrl + `/cards/likes/${cardId}`, {
-    method: "PUT",
-    headers: config.headers,
-  });
-  return await getResponseData(res);
-};
+const addLike = async (cardId) => { 
+  try {
+    const res = await fetch(config.baseUrl + `/cards/likes/${cardId}`, { 
+      method: "PUT", 
+      headers: config.headers, 
+    });
+    return await getResponseData(res);
+  } catch (error) {
+    console.error('Ошибка при добавлении лайка:', error);
+  }
+}; 
 
 //УДАЛЕНИЕ ЛАЙКА С СЕРВЕРА
 const deleteLike = async (cardId) => {
-  const res = await fetch(config.baseUrl + `/cards/likes/${cardId}`, {
-    method: "DELETE",
-    headers: config.headers,
-  });
-  return await getResponseData(res);
+  try {
+    const res = await fetch(config.baseUrl + `/cards/likes/${cardId}`, {
+      method: "DELETE",
+      headers: config.headers,
+    });
+    return await getResponseData(res);
+  } catch (error) {
+    console.error('Ошибка при удалении лайка:', error);
+  }
 };
 
 export { getCards, getInformation, sendingInformation, sendingAvatar, sendingCard, deleteCard, addLike, deleteLike };

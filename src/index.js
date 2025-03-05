@@ -198,3 +198,4 @@ Promise.all([getInformation(), getCards()])
   .catch((err) => {
     console.log(err);
   });
+
